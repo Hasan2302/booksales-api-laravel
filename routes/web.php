@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,5 @@ use App\Http\Controllers\LibraryController;
 
 Route::get('/', [LibraryController::class, 'index']);
 Route::get('/library', [LibraryController::class, 'index']);
+Route::get('/books', [BookController::class, 'index']);
+Route::get('/authors', [BookController::class, 'authors']);

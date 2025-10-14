@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-class Author
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Author extends Model
 {
+    use HasFactory;
+
     public static $authors = [
         ['id' => 1, 'name' => 'J.K. Rowling'],
         ['id' => 2, 'name' => 'George R.R. Martin'],
@@ -12,8 +17,4 @@ class Author
         ['id' => 5, 'name' => 'J.R.R. Tolkien'],
     ];
 
-    public static function all()
-    {
-        return self::$authors;
-    }
 }

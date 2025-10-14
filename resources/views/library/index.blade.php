@@ -45,11 +45,34 @@
                 @endforeach
             </tbody>
         </table>
+
+        <h1>Daftar Buku</h1>
+        <table id="bookTable" class="display">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Judul Buku</th>
+                    <th>Deskripsi</th>
+                    <th>Nama Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($books as $book)
+                    <tr>
+                        <td>{{ $book->id }}</td>
+                        <td>{{ $book->title }}</td>
+                        <td>{{ $book->description }}</td>
+                        <td>{{ $book->author->name }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </body>
     <script>
         $(document).ready(function() {
             $('#genreTable').DataTable();
             $('#authorTable').DataTable();
+            $('#bookTable').DataTable();
         });
     </script>
 </html>

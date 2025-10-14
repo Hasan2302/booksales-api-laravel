@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Genre;
 use App\Models\Author;
+use App\Models\Book;
 
 class LibraryController extends Controller
 {
@@ -11,6 +12,7 @@ class LibraryController extends Controller
     {
         $genres = Genre::all();
         $authors = Author::all();
-        return view('library.index', compact('genres', 'authors'));
+        $books = Book::with('author')->get();
+        return view('library.index', compact('genres', 'authors', 'books'));
     }
 }
