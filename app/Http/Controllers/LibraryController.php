@@ -13,6 +13,10 @@ class LibraryController extends Controller
         $genres = Genre::all();
         $authors = Author::all();
         $books = Book::with('author')->get();
-        return view('library.index', compact('genres', 'authors', 'books'));
+        return response()->json([
+            'genres' => $genres,
+            'authors' => $authors,
+            'books' => $books
+        ]);
     }
 }
