@@ -2,18 +2,13 @@
 
 namespace App\Models;
 
-class Genre
-{
-    public static $genres = [
-        ['id' => 1, 'name' => 'Fiction'],
-        ['id' => 2, 'name' => 'Non-Fiction'],
-        ['id' => 3, 'name' => 'Mystery'],
-        ['id' => 4, 'name' => 'Science Fiction'],
-        ['id' => 5, 'name' => 'Fantasy'],
-    ];
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-    public static function all()
-    {
-        return self::$genres;
-    }
+class Genre extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['name'];
 }
+

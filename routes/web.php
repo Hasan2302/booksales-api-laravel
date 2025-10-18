@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +20,7 @@ use App\Http\Controllers\BookController;
 Route::get('/', [LibraryController::class, 'index']);
 Route::get('/library', [LibraryController::class, 'index']);
 Route::get('/books', [BookController::class, 'index']);
-Route::get('/authors', [BookController::class, 'authors']);
+Route::get('/authors', [AuthorController::class, 'index']);
+Route::post('/authors', [AuthorController::class, 'store']);
+Route::get('/genres', [GenreController::class, 'index']);
+Route::post('/genres', [GenreController::class, 'store']);
