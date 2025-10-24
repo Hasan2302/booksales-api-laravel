@@ -34,11 +34,9 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
 Route::get('/genres', [GenreController::class, 'index']);
 Route::get('/genres/{genre}', [GenreController::class, 'show']);
-Route::middleware(['auth:sanctum', 'admin'])->group(function () {
-    Route::post('/genres', [GenreController::class, 'store']);
-    Route::put('/genres/{genre}', [GenreController::class, 'update']);
-    Route::delete('/genres/{genre}', [GenreController::class, 'destroy']);
-});
+Route::post('/genres', [GenreController::class, 'store']);
+Route::put('/genres/{genre}', [GenreController::class, 'update']);
+Route::delete('/genres/{genre}', [GenreController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/transactions', [TransactionController::class, 'store']);
