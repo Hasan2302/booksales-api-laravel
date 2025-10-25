@@ -16,7 +16,6 @@ class AuthorController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'bio' => 'nullable|string',
         ]);
 
         $author = Author::create($validated);
@@ -42,7 +41,6 @@ class AuthorController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'bio' => 'nullable|string',
         ]);
 
         $author->update($validated);
@@ -54,6 +52,10 @@ class AuthorController extends Controller
         $author = Author::find($id);
         if (!$author) {
             return response()->json(['message' => 'Author not found'], 404);
+        }
+
+        if ($author->books()->count() > 0) {
+            return response()->json(['message' => 'Cannot delete author because it is associated with books'], 400);
         }
 
         $author->delete();

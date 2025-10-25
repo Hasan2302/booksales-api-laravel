@@ -23,14 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/books', [BookController::class, 'index']);
 Route::post('/books', [BookController::class, 'store']);
+Route::put('/books/{book}', [BookController::class, 'update']);
+Route::delete('/books/{book}', [BookController::class, 'destroy']);
 
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::get('/authors/{author}', [AuthorController::class, 'show']);
-Route::middleware(['auth:sanctum', 'admin'])->group(function () {
-    Route::post('/authors', [AuthorController::class, 'store']);
-    Route::put('/authors/{author}', [AuthorController::class, 'update']);
-    Route::delete('/authors/{author}', [AuthorController::class, 'destroy']);
-});
+Route::post('/authors', [AuthorController::class, 'store']);
+Route::put('/authors/{author}', [AuthorController::class, 'update']);
+Route::delete('/authors/{author}', [AuthorController::class, 'destroy']);
 
 Route::get('/genres', [GenreController::class, 'index']);
 Route::get('/genres/{genre}', [GenreController::class, 'show']);
